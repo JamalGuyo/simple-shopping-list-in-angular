@@ -11,13 +11,13 @@
 
       <div class="form-group">
         <label for="itemQuantity">Item Quantity:</label>
-        <input class="form-control" type="number" [(ngModel)]="newItem.quantity" id="itemQuantity" placeholder="Quantity"
+        <input class="form-control" min="1" type="number" [(ngModel)]="newItem.quantity" id="itemQuantity" placeholder="Quantity"
           required>
       </div>
 
       <div class="form-group">
         <label for="itemPrice">Item Price:</label>
-        <input class="form-control" type="number" [(ngModel)]="newItem.price" id="itemPrice" placeholder="Price"
+        <input class="form-control" min="0" type="number" [(ngModel)]="newItem.price" id="itemPrice" placeholder="Price"
           required>
       </div>
 
@@ -43,16 +43,16 @@
 
         <tbody>
           <tr *ngFor="let item of shoppingBasket;let itemIndex=index">
-            <td scope="row">{{itemIndex + 1}}</td>
-            <td>{{item.name}}</td>
-            <td>
-              <input class="form-control" type="number" [(ngModel)]="item.quantity">
-            </td>
-            <td>{{item.price | currency:'Ksh'}}</td>
-            <td>{{getSubtotal(item) | currency: 'Ksh'}}</td>
-            <td class="text-right">
-              <button class="btn btn-link" (click)="removeItem(itemIndex)">Remove</button>
-            </td>
+              <td scope="row">{{itemIndex + 1}}</td>
+              <td>{{item.name}}</td>
+              <td>
+                <input class="form-control" type="number" [(ngModel)]="item.quantity">
+              </td>
+              <td>{{item.price | currency:'Ksh'}}</td>
+              <td>{{getSubtotal(item) | currency: 'Ksh'}}</td>
+              <td class="text-right">
+                <button class="btn btn-link" (click)="removeItem(itemIndex)">Remove</button>
+              </td>
           </tr>
           <tr>
             <th colspan="4" class="text-right">Total</th>
